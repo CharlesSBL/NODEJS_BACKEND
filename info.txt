@@ -57,6 +57,6 @@
   npm i bcrypt
 
 14. _________________
-  instalacja mongoDB compass
+  instalacja programmy na PC "mongoDB compass"
   sluzy do podlaczenia sie do swojej bazy dannych MongoDB
-  
+  i redagowac danne na serwerze
