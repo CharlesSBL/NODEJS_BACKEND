@@ -45,3 +45,18 @@
 
 11. _________________
   podlaczamy mongodb do serwera
+
+12. _________________
+  instaluemy express-validator
+  potrzebny jest zeby moc walidowac usera czy jest poprawny
+  npm i express-validator
+
+13. _________________
+  instalujemy bcrypt
+  za pomoca tej biblio szyfruje sie haslo
+  npm i bcrypt
+
+14. _________________
+  instalacja mongoDB compass
+  sluzy do podlaczenia sie do swojej bazy dannych MongoDB
+  
