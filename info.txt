@@ -1,0 +1,47 @@
+1. _________________
+  instalacja node.js
+
+2. _________________
+  tworzenie package.json
+  npm init
+
+3. _________________
+  instalowanie serwera express
+  npm i express
+
+4. _________________
+  dla pisania ETMAS6
+  w package.json dodajemy
+  ("type": "module")
+
+5. _________________
+  instalacja nodemon
+  gdy cos zmienimy na serverze, to ma zrobic restart 
+  npm i nodemon
+
+6. _________________
+  ukazujemy w package.json
+  "start:dev": "nodemo index.js"
+
+7. _________________
+  zainstalowac program (insomia)
+  dla testow serwera
+  insomia
+
+8. _________________
+  jsonwebtoken
+  pozwala obrabiac danne i je szyfrowac
+  npm i jsonwebtoken
+  import jwt from "jsonwebtoken";
+
+9. _________________
+  tworzymy baze dannych
+  ta biblioteka pozwala pracowac z baza dannych mongoDB
+  npm i mongoose
+
+10. _________________
+  kod dla polaczenia z mongodb
+  kod: mongodb+srv://TestMember:<password>@cluster0.vwkkanu.mongodb.net/?retryWrites=true&w=majority
+
+11. _________________
+  podlaczamy mongodb do serwera
