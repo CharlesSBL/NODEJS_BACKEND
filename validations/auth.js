@@ -16,3 +16,18 @@ export const registerValidator = [
   // czy jest to URL adress
   body("avatarUrl", "Wrong format of URL").optional().isURL(),
 ];
+
+// validacja dla logina
+export const loginValidator = [
+  body("email", "Wrong format of email").isEmail(),
+  body("password", "Password need have min 5 chars").isLength({ min: 5 }),
+];
+
+// walidacja dla (staciej)
+export const postCreateValidator = [
+  // nazwa, error, wymagana dlugosc, wymagany format (string)
+  body("title", "Wrong format of title").isLength({ min: 3 }).isString(),
+  body("text", "Text need have min 5 chars").isLength({ min: 10 }).isString(),
+  body("tags", "Wrong format of tags").optional().isString(),
+  body("avatarUrl", "Wrong format of URL").optional().isString(),
+];

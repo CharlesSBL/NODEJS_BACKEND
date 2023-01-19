@@ -60,3 +60,6 @@
   instalacja programmy na PC "mongoDB compass"
   sluzy do podlaczenia sie do swojej bazy dannych MongoDB
   i redagowac danne na serwerze
+
+15. _________________
+  tworzyc funkcjonal dla stron (CRUD)

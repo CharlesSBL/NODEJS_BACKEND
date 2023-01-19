@@ -12,6 +12,7 @@ export default (req, res, next) => {
       const decoded = jwt.verify(token, "secret123");
 
       // wyciagamy z tokena (id) ktore jest zapisane w bazie dannych mongoDB
+      // i pomieszczamy w message (request)
       req.userId = decoded._id;
 
       // jesli wszystko poprawnie

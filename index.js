@@ -6,13 +6,21 @@ import mongoose from "mongoose";
 
 // jest to nasz validator registracji usera
 // w node.js trzeba zawsze na koncu ukazywac format dokumentu
-import { registerValidator } from "./validations/auth.js";
+import {
+  registerValidator,
+  loginValidator,
+  postCreateValidator,
+} from "./validations/auth.js";
 
+// ta func pozwala sprawdzic login
 import checkAuth from "./utils/checkAuth.js";
 
 // wyciagamy wszystkie zapisane func dla logowania, rejestracji i tp z mongoDB
 // zapisujemy wszistkie export w jeden variable (UserController)
 import * as UserController from "./controllers/UserController.js";
+import * as PostController from "./controllers/PostController.js";
+
+// ====================================================================================
 
 // podlaczamy sie do bazy dannych (MongoDB)
 mongoose
@@ -26,19 +34,20 @@ mongoose
 //tworzenie express app serwer
 const app = express();
 
+// To jest tak zwany (Rout)
 // po wlaczeniu tej opcji, json files, tkore beda przychodzic na serwer,
 // express bedzie w stanie ich czytac
 app.use(express.json());
 
+// ====================================================================================
+
 // ukazujemy, ze jesli przyjdzie na serwer get request
 // to dajemy (rozkaz) zrobic wybranny kod (funkcje)
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+app.get("/", (req, res) => res.send("hello world"));
 
 // tworzymy autoryzacje gdzie klient bedzie mogl sie (logowac)
 // ukazujemy, to gdzie bedzie sie logowac klient i wysylac nam danne
-app.post("/auth/login", UserController.login);
+app.post("/auth/login", loginValidator, UserController.login);
 
 // funkcja dla mzliwosci regstracji nowego usera
 // tutaj sprawdza, jesli przyszly danne, to najpierw ma przejsc przez validator
@@ -48,6 +57,33 @@ app.post("/auth/register", registerValidator, UserController.register);
 // sprawdzamy, czy wogole da sie dostac info o sobie
 // podajem funkcje sprawdzenia autoryzjacji
 app.get("/auth/me", checkAuth, UserController.getMe);
+
+// ====================================================================================
+// rest API (CRUD)
+// Jest to funkcjonal dla redagowania dannych usera (staciej)
+// Mozna zrobic w jednym router 4 (komandy) (get, post, patch, delete) => (CRUD)
+
+// ten bedzie wyciagac wszystkie napisane (stacji) wszystkich
+app.get("/posts", PostController.getAll);
+
+// tutaj bedziemy wyciagac jedna (stacju)
+// (:id) jest to dynamiczny parametr
+app.get("/posts/:id", PostController.getOne);
+
+// tutaj bedziemy tworzyc nowa (stacje)
+// najpierw robi werifikacje uzytkownika (dodaje do request (id)),
+// weryfikacje posta, i zapisywanie go w mongoDB
+app.post("/posts", checkAuth, postCreateValidator, PostController.create);
+
+// tutaj bedziemy usuwac (stacju)
+// trzeba dawac token, zeby moc autoryzowac, sprawdzic usera
+// wtedy moze usunac post (stacju)
+app.delete("/posts/:id", checkAuth, PostController.remove);
+
+// Edytowac (stacje)
+app.patch("/posts/:id", PostController.update);
+
+// ====================================================================================
 
 // odpalamy serwer i ukazujemy port (4444)
 // u ukazujemy co ma robic przy odpaleniu sie
