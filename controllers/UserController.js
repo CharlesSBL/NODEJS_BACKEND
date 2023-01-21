@@ -15,16 +15,18 @@ import UserModel from "../models/User.js";
 export const register = async (req, res) => {
   // za pomoca (try catch) bedzie obrabiac wszystkie dopuszczone errory
   try {
-    // trzeba wszystko wyciagnac z requestu
-    const errors = validationResult(req);
+    // {
+    //   // trzeba wszystko wyciagnac z requestu
+    //   const errors = validationResult(req);
 
-    // jesli sa errory
-    if (!errors.isEmpty()) {
-      // to ma zwrocic response(400)
-      // ukazac ze wiadomosc jest nie prawidlowa(error)
-      // ukazamy wszystkie errory ktore byly dokonane w requescie
-      return res.status(400).json(errors.array());
-    }
+    //   // jesli sa errory
+    //   if (!errors.isEmpty()) {
+    //     // to ma zwrocic response(400)
+    //     // ukazac ze wiadomosc jest nie prawidlowa(error)
+    //     // ukazamy wszystkie errory ktore byly dokonane w requescie
+    //     return res.status(400).json(errors.array());
+    //   }
+    // }
 
     // wyciagamy z body requestu (haslo)
     const password = req.body.password;

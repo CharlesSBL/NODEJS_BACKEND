@@ -62,4 +62,10 @@
   i redagowac danne na serwerze
 
 15. _________________
-  tworzyc funkcjonal dla stron (CRUD)
+  tworzyc funkcjonalnosc dla stron (CRUD)
+  create, read, delete, edit(update)
+
+16. _________________
+  instalujemy Multer
+  sluzy dla ladowania obrazkow
+  npm i multer
